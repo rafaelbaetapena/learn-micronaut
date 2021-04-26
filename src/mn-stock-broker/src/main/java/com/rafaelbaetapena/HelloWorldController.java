@@ -25,8 +25,13 @@ public class HelloWorldController {
     }
 
     @Get("/en")
-    public  String greetInEnglish() {
+    public String greetInEnglish() {
         return config.getEn();
+    }
+
+    @Get("/json")
+    public Greeting json() {
+        return new Greeting();
     }
 
 }
