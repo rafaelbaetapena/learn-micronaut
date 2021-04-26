@@ -4,11 +4,14 @@ import com.rafaelbaetapena.broker.model.WatchList;
 import com.rafaelbaetapena.broker.store.InMemoryAccountStore;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
+import io.micronaut.security.annotation.Secured;
+import io.micronaut.security.rules.SecurityRule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
 
+@Secured(SecurityRule.IS_AUTHENTICATED)
 @Controller("/account/watchlist")
 public class WatchListController {
 
