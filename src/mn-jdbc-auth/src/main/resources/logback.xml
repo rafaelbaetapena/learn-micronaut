@@ -9,6 +9,8 @@
         </encoder>
     </appender>
 
+    <logger name="com.rafaelbaetapena" level="DEBUG"></logger>
+
     <root level="info">
         <appender-ref ref="STDOUT" />
     </root>

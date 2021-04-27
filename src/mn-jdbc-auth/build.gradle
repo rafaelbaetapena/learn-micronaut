@@ -20,6 +20,8 @@ micronaut {
 }
 
 dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
     annotationProcessor("io.micronaut.data:micronaut-data-processor")
     annotationProcessor("io.micronaut.security:micronaut-security-annotations")
     implementation("io.micronaut:micronaut-http-client")
