@@ -12,8 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Singleton;
-import java.util.ArrayList;
-import java.util.Optional;
+import java.util.*;
 
 @Singleton
 public class JDBCAuthenticationProvider implements AuthenticationProvider {
@@ -40,7 +39,14 @@ public class JDBCAuthenticationProvider implements AuthenticationProvider {
                 if (maybeUser.get().getPassword().equals(secret)) {
                     // pass
                     LOG.debug("User logged in.");
-                    emitter.onNext(new UserDetails(identity, new ArrayList<>()));
+                    final HashMap<String, Object> attributes = new HashMap<>();
+                    attributes.put("hair_color", "brown");
+                    attributes.put("language", "en");
+                    final UserDetails userDetails = new UserDetails(
+                            identity,
+                            Collections.singletonList("ROLE_USER"),
+                            attributes);
+                    emitter.onNext(userDetails);
                     emitter.onComplete();
                     return;
                 } else {
