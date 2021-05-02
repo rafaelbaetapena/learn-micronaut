@@ -38,7 +38,7 @@ flyway:
   datasources:
     default:
       enabled: true
-      clean-schema: true
+      clean-schema: false
       url: ${PG_JDBC_URL:`jdbc:postgresql://127.0.0.1:5433/mn-stock-broker`}
       user: ${PG_USERNAME:postgres}
       password: ${PG_PASSWORD} # secret

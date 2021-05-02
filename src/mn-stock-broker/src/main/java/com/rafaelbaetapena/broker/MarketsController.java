@@ -1,8 +1,8 @@
 package com.rafaelbaetapena.broker;
 
 import com.rafaelbaetapena.broker.model.Symbol;
-import com.rafaelbaetapena.broker.persistence.jpa.SymbolEntity;
 import com.rafaelbaetapena.broker.persistence.jpa.SymbolsRepository;
+import com.rafaelbaetapena.broker.persistence.model.SymbolEntity;
 import com.rafaelbaetapena.broker.store.InMemoryStore;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
