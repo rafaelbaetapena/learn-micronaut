@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.rafaelbaetapena
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [annotation-api, app-name, data, data-jdbc, http-client, java, java-application, jdbc-hikari, junit, liquibase, logback, maven, mysql, netty-server, readme, shade, testcontainers, yaml]
