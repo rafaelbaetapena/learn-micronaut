@@ -3,6 +3,7 @@ package com.rafaelbaetapena.broker;
 import com.rafaelbaetapena.broker.error.CustomError;
 import com.rafaelbaetapena.broker.model.Quote;
 import com.rafaelbaetapena.broker.persistence.jpa.QuotesRepository;
+import com.rafaelbaetapena.broker.persistence.model.QuoteDTO;
 import com.rafaelbaetapena.broker.persistence.model.QuoteEntity;
 import com.rafaelbaetapena.broker.persistence.model.SymbolEntity;
 import com.rafaelbaetapena.broker.store.InMemoryStore;
@@ -84,12 +85,12 @@ public class QuotesController {
     }
 
     @Get("/jpa/ordered/desc")
-    public List<QuoteEntity> orderedDesc() {
+    public List<QuoteDTO> orderedDesc() {
         return  quotes.listOrderByVolumeDesc();
     }
 
     @Get("/jpa/ordered/asc")
-    public List<QuoteEntity> orderedAsc() {
+    public List<QuoteDTO> orderedAsc() {
         return  quotes.listOrderByVolumeAsc();
     }
 }
