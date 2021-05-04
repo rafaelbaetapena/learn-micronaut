@@ -2,6 +2,8 @@ package com.rafaelbaetapena;
 
 import com.rafaelbaetapena.quotes.external.ExternalQuote;
 import com.rafaelbaetapena.quotes.external.ExternalQuoteProducer;
+import io.micronaut.context.annotation.Requires;
+import io.micronaut.context.env.Environment;
 import io.micronaut.scheduling.annotation.Scheduled;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +15,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Singleton
+@Requires(notEnv = Environment.TEST)
 public class EventScheduler {
 
     private static final Logger LOG = LoggerFactory.getLogger(EventScheduler.class);

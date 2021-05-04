@@ -4,6 +4,8 @@ import com.rafaelbaetapena.prices.PriceUpdate;
 import com.rafaelbaetapena.prices.PriceUpdateProducer;
 import io.micronaut.configuration.kafka.annotation.KafkaListener;
 import io.micronaut.configuration.kafka.annotation.Topic;
+import io.micronaut.context.annotation.Requires;
+import io.micronaut.context.env.Environment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,6 +17,7 @@ import java.util.stream.Collectors;
         groupId = "external-quote-consumer",
         batch = true
 )
+@Requires(notEnv = Environment.TEST)
 public class ExternalQuoteConsumer {
 
     private static final Logger LOG = LoggerFactory.getLogger(ExternalQuoteConsumer.class);
