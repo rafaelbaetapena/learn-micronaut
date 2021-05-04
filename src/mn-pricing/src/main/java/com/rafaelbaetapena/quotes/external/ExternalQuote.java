@@ -1,4 +1,4 @@
-package com.rafaelbaetapena;
+package com.rafaelbaetapena.quotes.external;
 
 import java.math.BigDecimal;
 

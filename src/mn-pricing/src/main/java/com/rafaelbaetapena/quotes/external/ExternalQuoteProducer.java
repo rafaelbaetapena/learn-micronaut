@@ -1,4 +1,4 @@
-package com.rafaelbaetapena;
+package com.rafaelbaetapena.quotes.external;
 
 import io.micronaut.configuration.kafka.annotation.KafkaClient;
 import io.micronaut.configuration.kafka.annotation.KafkaKey;

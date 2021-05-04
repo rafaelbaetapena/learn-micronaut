@@ -1,5 +1,7 @@
 package com.rafaelbaetapena;
 
+import com.rafaelbaetapena.quotes.external.ExternalQuote;
+import com.rafaelbaetapena.quotes.external.ExternalQuoteProducer;
 import io.micronaut.scheduling.annotation.Scheduled;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
