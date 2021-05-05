@@ -3,9 +3,8 @@ package com.rafaelbaetapena.quotes.external;
 import com.rafaelbaetapena.prices.PriceUpdate;
 import com.rafaelbaetapena.prices.PriceUpdateProducer;
 import io.micronaut.configuration.kafka.annotation.KafkaListener;
+import io.micronaut.configuration.kafka.annotation.OffsetReset;
 import io.micronaut.configuration.kafka.annotation.Topic;
-import io.micronaut.context.annotation.Requires;
-import io.micronaut.context.env.Environment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,9 +14,9 @@ import java.util.stream.Collectors;
 @KafkaListener(
         clientId = "mn-pricing-external-quote-consumer",
         groupId = "external-quote-consumer",
-        batch = true
+        batch = true,
+        offsetReset = OffsetReset.EARLIEST
 )
-@Requires(notEnv = Environment.TEST)
 public class ExternalQuoteConsumer {
 
     private static final Logger LOG = LoggerFactory.getLogger(ExternalQuoteConsumer.class);
