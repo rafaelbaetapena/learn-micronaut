@@ -1,4 +1,4 @@
-package com.rafaelbaetapena;
+package com.rafaelbaetapena.websockets;
 
 import io.micronaut.runtime.Micronaut;
 
