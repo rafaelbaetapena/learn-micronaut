@@ -16,7 +16,7 @@ public class PricePush {
         this.broadcaster = broadcaster;
     }
 
-    @Scheduled(fixedDelay = "1s")
+    @Scheduled(fixedDelay = "5s")
     public void push(){
         broadcaster.broadcastSync(
                 new PriceUpdate("AMZN", randomValue())
