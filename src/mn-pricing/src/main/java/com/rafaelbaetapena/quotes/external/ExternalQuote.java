@@ -1,7 +1,10 @@
 package com.rafaelbaetapena.quotes.external;
 
+import io.micronaut.core.annotation.Introspected;
+
 import java.math.BigDecimal;
 
+@Introspected
 public class ExternalQuote {
 
     private String symbol;

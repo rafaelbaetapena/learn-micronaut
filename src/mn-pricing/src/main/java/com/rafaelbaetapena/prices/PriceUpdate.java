@@ -1,7 +1,10 @@
 package com.rafaelbaetapena.prices;
 
+import io.micronaut.core.annotation.Introspected;
+
 import java.math.BigDecimal;
 
+@Introspected
 public class PriceUpdate {
 
     private String symbol;
