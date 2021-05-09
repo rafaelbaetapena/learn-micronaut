@@ -1,3 +1,3 @@
 # learn-micronaut
 
-- mn-stock-broker [Learn Micronaut](https://www.udemy.com/course/learn-micronaut)
+[Learn Micronaut](https://www.udemy.com/course/learn-micronaut)
