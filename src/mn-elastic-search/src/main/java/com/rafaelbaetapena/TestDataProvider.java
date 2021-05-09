@@ -31,7 +31,7 @@ public class TestDataProvider {
     void insertDocument() {
         LOG.info("Inserting a document...");
 
-        var document = new HashMap<>();
+        var document = new HashMap<String, String>();
         document.put("first_name", FAKER.name().firstName());
         document.put("last_name", FAKER.name().lastName());
 

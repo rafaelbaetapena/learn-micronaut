@@ -11,11 +11,20 @@ import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.asyncsearch.AsyncSearchResponse;
+import org.elasticsearch.client.asyncsearch.SubmitAsyncSearchRequest;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Controller("/data")
 public class DataEndpoint {
@@ -56,4 +65,34 @@ public class DataEndpoint {
 
         return whenDone;
     }
+
+     @Get("/document/async/firstname/{search}")
+    public CompletableFuture<String> byFirstName(@PathVariable("search") String search) {
+        var whenDone = new CompletableFuture<String>();
+
+         final SearchSourceBuilder source = new SearchSourceBuilder()
+                 .query(QueryBuilders.matchQuery("first_name", search));
+         final SubmitAsyncSearchRequest request = new SubmitAsyncSearchRequest(
+                 source, Constants.INDEX);
+         client.asyncSearch().submitAsync(
+                 request,
+                RequestOptions.DEFAULT,
+                new ActionListener<>() {
+                    @Override
+                    public void onResponse(AsyncSearchResponse asyncSearchResponse) {
+                        final SearchHit[] hits =
+                                asyncSearchResponse.getSearchResponse().getHits().getHits();
+                        final List<String> response =
+                                Stream.of(hits).map(SearchHit::getSourceAsString).collect(Collectors.toList());
+                        LOG.debug("Response /document/async/firstname/{} => {}", search, response);
+                        whenDone.complete(response.toString());
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+                        whenDone.completeExceptionally(e);
+                    }
+        });
+        return whenDone;
+     }
 }
