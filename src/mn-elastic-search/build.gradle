@@ -25,6 +25,7 @@ dependencies {
     implementation("io.micronaut.elasticsearch:micronaut-elasticsearch")
     implementation("javax.annotation:javax.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
+    implementation("com.github.javafaker:javafaker:1.0.2")
     implementation("io.micronaut:micronaut-validation")
 }
 
